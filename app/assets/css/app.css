@@ -1,0 +1,56 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	background: #13232f;
+	font-size: 14px;
+	font-family: 'Dosis', sans-serif;
+}
+nav.navbar-forum{
+	background: #113B51;
+}
+nav.navbar-forum a{
+	color: #fff;
+}
+nav.navbar-forum a:hover,nav.navbar-forum a:active,nav.navbar-forum a:focus,.nav .open > a, .nav .open > a:hover, .nav .open > a:focus{
+	background: none;
+	color: #fff;
+}
+ul.dropdown-menu{
+	background: #22283D;
+}
+a.navbar-brand{
+	font-size: 30px;
+}
+.margin-top-70{
+	margin-top: 70px;
+}
+.btn-forum{
+	background: #032436;
+	color: #fff;
+	border: none;
+	width: 200px;
+}
+.btn-reset{
+	width: 200px;
+}
+.btn-forum:hover, .btn-forum:focus, .btn-forum.focus{
+	color: #fff !important;
+}
+.dropdown-menu li{
+	border-bottom: 1px solid #efefef;
+}
+.dropdown-menu li a{
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.dropdown-menu li:last-child{
+	border-bottom: none;
+}
+div.forumform{
+	padding: 20px;
+	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+	background: #efefef;
+}

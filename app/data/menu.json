@@ -1,0 +1,114 @@
+{
+    "menu": [
+        {
+            "label": "Tab 1",
+            "submenu": [
+                {
+                    "label": "Sub Tab 1 "
+                },
+                {
+                    "label": "Sub Tab 1 "
+                }
+            ]
+        },
+        {
+            "label": "Tab 2",
+            "submenu": [
+                {
+                    "label": "Sub Tab 2 "
+                },
+                {
+                    "label": "Sub Tab 2 "
+                }
+            ]
+        },
+        {
+            "label": "Tab 3",
+            "submenu": [
+                {
+                    "label": "Sub Tab 3 "
+                },
+                {
+                    "label": "Sub Tab 3 "
+                }
+            ]
+        },
+        {
+            "label": "Tab 4",
+            "submenu": [
+                {
+                    "label": "Sub Tab 4 "
+                },
+                {
+                    "label": "Sub Tab 4 "
+                }
+            ]
+        },
+        {
+            "label": "Tab 5",
+            "submenu": [
+                {
+                    "label": "Sub Tab 5 "
+                },
+                {
+                    "label": "Sub Tab 5 "
+                }
+            ]
+        },
+        {
+            "label": "Tab 6",
+            "submenu": [
+                {
+                    "label": "Sub Tab 6 "
+                },
+                {
+                    "label": "Sub Tab 6 "
+                }
+            ]
+        },
+        {
+            "label": "Tab 7",
+            "submenu": [
+                {
+                    "label": "Sub Tab 7 "
+                },
+                {
+                    "label": "Sub Tab 7 "
+                }
+            ]
+        },
+        {
+            "label": "Tab 8",
+            "submenu": [
+                {
+                    "label": "Sub Tab 8 "
+                },
+                {
+                    "label": "Sub Tab 8 "
+                }
+            ]
+        },
+        {
+            "label": "Tab 9",
+            "submenu": [
+                {
+                    "label": "Sub Tab 9 "
+                },
+                {
+                    "label": "Sub Tab 9 "
+                }
+            ]
+        },
+        {
+            "label": "Tab 10",
+            "submenu": [
+                {
+                    "label": "Sub Tab 10 "
+                },
+                {
+                    "label": "Sub Tab 10 "
+                }
+            ]
+        }
+    ]
+}
