@@ -1,0 +1,104 @@
+<nav class="navbar navbar-default navbar-fm navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Forum</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">SIGN IN <span class="sr-only">(current)</span></a></li>
+			</ul>
+		</div><!--/.nav-collapse -->
+	</div>
+</nav>
+<div class="fmbackground"></div>
+<div class="fminneroverlay">
+	<!-- Header -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 text-center lefttext">
+				<h2>THINGS ARE MADE EASY. GET THE SOLUTIONS FOR YOUR QUERIES</h2>
+				<a href="#fmtopforum"><i class="fa fa-chevron-down "></i></a>
+			</div>
+			<div class="col-md-4">
+				<form name="fmsignup" class="fmhomeform">
+					<h2>SIGN UP NOW</h2>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Username" />
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Email Address" />
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Password" />
+					</div>
+					<button class="btn btn-primary btn-fmsubmit">Sign up</button>
+					<button class="btn btn-fmreset">Reset</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div
+
+	<!-- Section for top forums -->
+	<div class="container" id="fmtopforum">
+		<h3>TOP THREADS</h3>
+		<div class="threads row" ng-repeat="thread in topForum">
+			<div class="col-md-2 text-center">
+				<div class="thumbnail">
+					<img ng-src="{{thread.src}}" class="img-circle" alt="Img" />
+					<span>{{thread.name}}</span>
+				</div>
+			</div>
+			<div class="col-md-10">
+				<div class="threaddetails">
+					<div class="row">
+						<div class="col-md-11">
+							<a href="#">{{thread.thread}}</a>
+							<div>
+								{{thread.detail}}
+							</div>
+						</div>
+						<div class="col-md-1 text-right">
+							<div class="count">
+								{{thread.count}}
+							</div>
+						</div>
+					</div>
+					<div class="seperator"></div>
+					<div class="row margin-bottom-20">
+						<div class="col-md-2">
+							<i class="glyphicon glyphicon-time"></i> {{thread.lastmodified}}
+						</div>
+						<div class="col-md-4">
+							<i class="glyphicon glyphicon-thumbs-up"></i> {{thread.likes}} &nbsp;&nbsp;
+							<i class="glyphicon glyphicon-thumbs-down"></i> {{thread.dislikes}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		$(function() {
+			$('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+					var target = $(this.hash);
+					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+					if (target.length) {
+						$('html,body').animate({
+							scrollTop: target.offset().top
+						}, 1000);
+						return false;
+					}
+				}
+			});
+		});
+	</script>

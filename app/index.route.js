@@ -7,13 +7,13 @@
 
 	// Defining router configuration
 	function routerConfiguration($stateProvider, $urlRouterProvider){
-		$urlRouterProvider.otherwise('/home/entry');
+		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
 		.state('home',{
-			url:'/home',
-			templateUrl:'app/common/common.html',
-			controller:'CommonController'
+			url:'/',
+			templateUrl:'app/components/home/forum.home.html',
+			controller:'HomeController'
 		})
 		.state('home.entry',{
 			url:'/entry',
