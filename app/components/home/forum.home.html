@@ -11,7 +11,7 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">SIGN IN <span class="sr-only">(current)</span></a></li>
+				<li><a href="#" data-toggle="modal" data-target="#signPop">SIGN IN <span class="sr-only">(current)</span></a></li>
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div>
@@ -46,62 +46,89 @@
 			</div>
 		</div>
 	</div>
-	</div
-
-	<!-- Section for top forums -->
-	<div class="container" id="fmtopforum">
-		<h3>TOP THREADS</h3>
-		<div class="threads row" ng-repeat="thread in topForum">
-			<div class="col-md-2 text-center">
-				<div class="thumbnail">
-					<img ng-src="{{thread.src}}" class="img-circle" alt="Img" />
-					<span>{{thread.name}}</span>
-				</div>
+</div>
+<!-- Section for top forums -->
+<div class="container" id="fmtopforum">
+	<h3>TOP THREADS</h3>
+	<div class="threads row" ng-repeat="thread in topForum">
+		<div class="col-md-2 text-center">
+			<div class="thumbnail">
+				<img ng-src="{{thread.src}}" class="img-circle" alt="Img" />
+				<span>{{thread.name}}</span>
 			</div>
-			<div class="col-md-10">
-				<div class="threaddetails">
-					<div class="row">
-						<div class="col-md-11">
-							<a href="#">{{thread.thread}}</a>
-							<div>
-								{{thread.detail}}
-							</div>
-						</div>
-						<div class="col-md-1 text-right">
-							<div class="count">
-								{{thread.count}}
-							</div>
+		</div>
+		<div class="col-md-10">
+			<div class="threaddetails">
+				<div class="row">
+					<div class="col-md-11">
+						<a href="#">{{thread.thread}}</a>
+						<div>
+							{{thread.detail}}
 						</div>
 					</div>
-					<div class="seperator"></div>
-					<div class="row margin-bottom-20">
-						<div class="col-md-2">
-							<i class="glyphicon glyphicon-time"></i> {{thread.lastmodified}}
+					<div class="col-md-1 text-right">
+						<div class="count">
+							{{thread.count}}
 						</div>
-						<div class="col-md-4">
-							<i class="glyphicon glyphicon-thumbs-up"></i> {{thread.likes}} &nbsp;&nbsp;
-							<i class="glyphicon glyphicon-thumbs-down"></i> {{thread.dislikes}}
-						</div>
+					</div>
+				</div>
+				<div class="seperator"></div>
+				<div class="row margin-bottom-20">
+					<div class="col-md-2">
+						<i class="glyphicon glyphicon-time"></i> {{thread.lastmodified}}
+					</div>
+					<div class="col-md-4">
+						<i class="glyphicon glyphicon-thumbs-up"></i> {{thread.likes}} &nbsp;&nbsp;
+						<i class="glyphicon glyphicon-thumbs-down"></i> {{thread.dislikes}}
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="signPop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Sign In</h4>
+			</div>
+			<div class="modal-body">
+				<form name="signform" novalidate>
+					<div class="form-group">
+						<label>Username</label>
+						<input type="text" class="form-control" name="username" ng-model="signusername" required />
+					</div>
+					<div class="form-group">
+						<label>Password</label>
+						<input type="password" class="form-control" name="password" ng-model="signpassword" required />
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-fmreset" data-dismiss="modal">Close</button>
+						<button type="button" ng-click="signin(signform.$invalid)" class="btn btn-primary btn-fmsubmit">Save changes</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 
 
-	<script>
-		$(function() {
-			$('a[href*=#]:not([href=#])').click(function() {
-				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-					var target = $(this.hash);
-					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-					if (target.length) {
-						$('html,body').animate({
-							scrollTop: target.offset().top
-						}, 1000);
-						return false;
-					}
+<script>
+	$(function() {
+		$('a[href*=#]:not([href=#])').click(function() {
+			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+				var target = $(this.hash);
+				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				if (target.length) {
+					$('html,body').animate({
+						scrollTop: target.offset().top
+					}, 1000);
+					return false;
 				}
-			});
+			}
 		});
-	</script>
+	});
+</script>

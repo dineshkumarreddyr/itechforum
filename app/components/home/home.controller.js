@@ -20,5 +20,13 @@
 			}
 		}
 		(new init()).getTopthread();
+
+
+		$scope.signin = function(invalid){
+			if(invalid){
+				alert('Please enter username / password');
+				return;
+			}
+		}
 	}
 })();

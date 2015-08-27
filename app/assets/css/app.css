@@ -168,3 +168,6 @@ div.threaddetails a{
 .margin-bottom-20{
 	margin-bottom: 20px;
 }
+#signPop .modal-content{
+	border-radius: 0;
+}
