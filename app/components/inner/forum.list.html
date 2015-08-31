@@ -1,0 +1,70 @@
+<nav class="navbar navbar-default navbar-fm navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Forum</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="javascript:void(0);">Welcome, {{vm.username}}</a></li>
+				<li><a href="#" ng-click="vm.signout()">Sign out</a></li>
+			</ul>
+		</div><!--/.nav-collapse -->
+	</div>
+</nav>
+<section>
+	<div class="listimg">
+		<img src="app/assets/images/list_bg.png" alt="List Background" />
+
+		<div class="controls">
+			<div class="pull-left">
+				<input type="text" placeholder="Search your query" />
+			</div>
+			<div class="pull-right"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></div>
+		</div>
+	</div>
+</section>
+
+<div class="container" id="fmtopforum">
+	<h3>TOP THREADS</h3>
+	<div class="threads row" ng-repeat="thread in vm.topForum">
+		<div class="col-md-2 text-center">
+			<div class="thumbnail">
+				<img ng-src="{{thread.src}}" class="img-circle" alt="Img" />
+				<span>{{thread.name}}</span>
+			</div>
+		</div>
+		<div class="col-md-10">
+			<div class="threaddetails">
+				<div class="row">
+					<div class="col-md-11">
+						<a href="#">{{thread.thread}}</a>
+						<div>
+							{{thread.detail}}
+						</div>
+					</div>
+					<div class="col-md-1 text-right">
+						<div class="count">
+							{{thread.count}}
+						</div>
+					</div>
+				</div>
+				<div class="seperator"></div>
+				<div class="row margin-bottom-20">
+					<div class="col-md-2">
+						<i class="glyphicon glyphicon-time"></i> {{thread.lastmodified}}
+					</div>
+					<div class="col-md-4">
+						<i class="glyphicon glyphicon-thumbs-up"></i> {{thread.likes}} &nbsp;&nbsp;
+						<i class="glyphicon glyphicon-thumbs-down"></i> {{thread.dislikes}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

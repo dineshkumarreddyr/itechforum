@@ -18,6 +18,12 @@
 		.state('home.entry',{
 			url:'/entry',
 			templateUrl:'app/components/entry/entry.html'
+		})
+		.state('list',{
+			url:'/list',
+			templateUrl:'app/components/inner/forum.list.html',
+			controller:'ListController',
+			controllerAs:'vm'
 		});
 	}
 })();

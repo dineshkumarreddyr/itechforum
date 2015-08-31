@@ -5,7 +5,8 @@
 
 body{
 	/*background: #13232f;*/
-	background: #989c9e;
+	/*background: #989c9e;*/
+	background: #ecf0f1;
 	font-size: 14px;
 	font-family: 'Dosis', sans-serif;
 }
@@ -170,4 +171,30 @@ div.threaddetails a{
 }
 #signPop .modal-content{
 	border-radius: 0;
+}
+.listimg img{
+	width: 100%;
+}
+.controls{
+	position: absolute;
+	top: 30%;
+	left:33%;
+}
+.controls input[type=text]{
+	border: none;
+	box-shadow: none;
+	background-color: #f3f5f9;
+	color: #363838;
+	font-size: 14px;
+	padding: 8px 19px;
+	height: 38px;
+	width: 400px;
+	outline: 0;
+}
+.controls button{
+	border: solid 1px #697683;
+	box-shadow: none;
+	background-color: #697683;
+	color: #ffffff;
+	font-size: 18px;
 }
