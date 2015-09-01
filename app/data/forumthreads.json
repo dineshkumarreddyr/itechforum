@@ -1,0 +1,130 @@
+{
+	"categories":[
+	{"id":"1","name":"Visa Processing","topics":"121"},
+	{"id":"2","name":"Technology Learning Management","topics":"300"},
+	{"id":"3","name":"Health and Fitness","topics":"7"},
+	{"id":"4","name":"Technology","topics":"211"},
+	{"id":"5","name":"Angular JS implementation","topics":"655"}
+	],
+	"topics":[
+	{
+		"topicid":"1",
+		"categoryid":"1",
+		"thread":"How to apply american visa",
+		"detail":"Can some one tell me how can i apply american visa",
+		"count":"2543",
+		"lastmodified":"18, August 2015",
+		"likes":"111",
+		"dislikes":"12",
+		"src":"app/assets/images/3.jpg",
+		"name":"Marilona"
+		},
+		{
+			"topicid":"2",
+			"categoryid":"1",
+			"thread":"Visa Processing time",
+			"detail":"What would be visa processig time",
+			"count":"2543",
+			"lastmodified":"17, August 2015",
+			"likes":"766",
+			"dislikes":"12",
+			"src":"app/assets/images/2.jpg",
+			"name":"Peter Hanes"
+			},
+			{
+				"topicid":"3",
+				"categoryid":"1",
+				"thread":"Visa types",
+				"detail":"How many types of visa that can be applied",
+				"count":"2543",
+				"lastmodified":"15, August 2015",
+				"likes":"544",
+				"dislikes":"12",
+				"src":"app/assets/images/3.jpg",
+				"name":"Marilona"
+				},
+				{
+					"topicid":"4",
+					"categoryid":"1",
+					"thread":"Visa Centers",
+					"detail":"Where i can apply visa and what are the center available",
+					"count":"2543",
+					"lastmodified":"10, August 2015",
+					"likes":"1211",
+					"dislikes":"12",
+					"src":"app/assets/images/1.jpg",
+					"name":"Jessica"
+					},{
+						"topicid":"5",
+						"categoryid":"2",
+						"thread":"What is learning management",
+						"detail":"What are tips to learn",
+						"count":"322",
+						"lastmodified":"14, August 2015",
+						"likes":"211",
+						"dislikes":"43",
+						"src":"app/assets/images/2.jpg",
+						"name":"Dinesh Kumar"
+						},
+						{
+							"topicid":"6",
+							"categoryid":"2",
+							"thread":"Any ebooks for this",
+							"detail":"Can some one suggest the ebooks for this",
+							"count":"12",
+							"lastmodified":"18, August 2015",
+							"likes":"44",
+							"dislikes":"06",
+							"src":"app/assets/images/3.jpg",
+							"name":"Marilona"
+							},
+							{
+								"topicid":"7",
+								"categoryid":"1",
+								"thread":"Visa Rules",
+								"detail":"What would be visa rules",
+								"count":"43",
+								"lastmodified":"9, August 2015",
+								"likes":"09",
+								"dislikes":"21",
+								"src":"app/assets/images/2.jpg",
+								"name":"Johnson"
+								},
+								{
+									"topicid":"8",
+									"categoryid":"1",
+									"thread":"Visa Documentation",
+									"detail":"What are the documents to submit",
+									"count":"433",
+									"lastmodified":"9, August 2015",
+									"likes":"7",
+									"dislikes":"1",
+									"src":"app/assets/images/3.jpg",
+									"name":"Marilona"
+								}
+								],
+								"replies":[
+								{
+									"replyid":"1",
+									"topicid":"1",
+									"thread":"RE: How to apply american visa",
+									"answer":"You have to open a portal and make sure all pre requisites.Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet ",
+									"lastmodified":"18, August 2015",
+									"likes":"32",
+									"dislikes":"11",
+									"src":"app/assets/images/4.jpg",
+									"name":"Nibolen"
+									},
+									{
+										"replyid":"2",
+										"topicid":"1",
+										"thread":"RE: How to apply american visa",
+										"answer":"Please follow below link to get the detail https://yoursite.com",
+										"lastmodified":"18, August 2015",
+										"likes":"02",
+										"dislikes":"1",
+										"src":"app/assets/images/1.jpg",
+										"name":"Jessica"
+									}
+									]
+								}

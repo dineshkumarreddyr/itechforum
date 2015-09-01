@@ -24,6 +24,12 @@
 			templateUrl:'app/components/inner/forum.list.html',
 			controller:'ListController',
 			controllerAs:'vm'
+		})
+		.state('detail',{
+			url:'/detail?:id',
+			templateUrl:'app/components/details/forum.threaddetail.html',
+			controller:'ThreaddetailController',
+			controllerAs:'vm'
 		});
 	}
 })();

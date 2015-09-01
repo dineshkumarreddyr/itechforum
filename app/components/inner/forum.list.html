@@ -7,12 +7,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Forum</a>
+			<a class="navbar-brand" ui-sref="home">Forum</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="javascript:void(0);">Welcome, {{vm.username}}</a></li>
-				<li><a href="#" ng-click="vm.signout()">Sign out</a></li>
+				<li><a href="javascript:void(0);" ng-click="vm.signout()">Sign out</a></li>
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div>
@@ -23,48 +23,92 @@
 
 		<div class="controls">
 			<div class="pull-left">
-				<input type="text" placeholder="Search your query" />
+				<input type="text" ng-model="vm.searchtopic" placeholder="Search your topic" />
 			</div>
 			<div class="pull-right"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></div>
 		</div>
 	</div>
 </section>
 
-<div class="container" id="fmtopforum">
-	<h3>TOP THREADS</h3>
-	<div class="threads row" ng-repeat="thread in vm.topForum">
-		<div class="col-md-2 text-center">
-			<div class="thumbnail">
-				<img ng-src="{{thread.src}}" class="img-circle" alt="Img" />
-				<span>{{thread.name}}</span>
-			</div>
+<section class="threadcontent" ng-show="vm.tempTopics.length > 0">
+	<div class="container-fluid">
+		<div class="col-md-8">
+			<!--Top Pagination -->
+				<div class="pagination pull-right top">
+					<i ng-click="vm.currentPage=vm.currentPage-1" class="glyphicon glyphicon-menu-left"></i>
+					<span>{{vm.currentPage+1}}</span>
+					<i ng-click="vm.currentPage=vm.currentPage+1" class="glyphicon glyphicon-menu-right"></i>
+				</div>
 		</div>
-		<div class="col-md-10">
-			<div class="threaddetails">
-				<div class="row">
-					<div class="col-md-11">
-						<a href="#">{{thread.thread}}</a>
-						<div>
-							{{thread.detail}}
+	</div>
+</section>
+<section class="threadcontent">
+	<div class="container-fluid">
+		<div class="col-md-8">
+			<div class="forumtile" ng-show="vm.tempTopics.length == 0">
+				Please select a category
+			</div>
+			<div class="forumtile" id="fmtopforum" ng-show="vm.tempTopics.length > 0">
+			
+				<div class="threads row" ng-repeat="thread in vm.tempTopics | filter:{'thread':vm.searchtopic} | startFrom:vm.currentPage*vm.pageSize | limitTo:vm.pageSize">
+					<div class="col-md-2 text-center">
+						<div class="thumbnail">
+							<img ng-src="{{thread.src}}" class="img-circle" alt="Img" />
+							<span>{{thread.name}}</span>
 						</div>
 					</div>
-					<div class="col-md-1 text-right">
-						<div class="count">
-							{{thread.count}}
+					<div class="col-md-10">
+						<div class="threaddetails">
+							<div class="row">
+								<div class="col-md-11">
+									<a href="javascript:void(0);" ng-click="vm.showdetail($index)">{{thread.thread}}</a>
+									<div>
+										{{thread.detail}}
+									</div>
+								</div>
+								<div class="col-md-1 text-right">
+									<div class="count" title="{{thread.count}} Replies">
+										{{thread.count}}
+									</div>
+								</div>
+							</div>
+							<div class="seperator"></div>
+							<div class="row margin-bottom-20">
+								<div class="col-md-3">
+									<i class="glyphicon glyphicon-time"></i> {{thread.lastmodified}}
+								</div>
+								<div class="col-md-4">
+									<i class="glyphicon glyphicon-thumbs-up"></i> {{thread.likes}} &nbsp;&nbsp;
+									<i class="glyphicon glyphicon-thumbs-down"></i> {{thread.dislikes}}
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="seperator"></div>
-				<div class="row margin-bottom-20">
-					<div class="col-md-2">
-						<i class="glyphicon glyphicon-time"></i> {{thread.lastmodified}}
-					</div>
-					<div class="col-md-4">
-						<i class="glyphicon glyphicon-thumbs-up"></i> {{thread.likes}} &nbsp;&nbsp;
-						<i class="glyphicon glyphicon-thumbs-down"></i> {{thread.dislikes}}
+				<!--Down Pagination -->
+				<div class="pagination pull-right">
+				<i ng-click="vm.currentPage=vm.currentPage-1" class="glyphicon glyphicon-menu-left"></i>
+				<span>{{vm.currentPage+1}}</span>
+				<i ng-click="vm.currentPage=vm.currentPage+1" class="glyphicon glyphicon-menu-right"></i>
+			</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="forumtile">
+				<h4>Categories</h4>
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="forumlist">
+							<li ng-repeat="item in vm.categories">
+								<a href="javascript:void(0);" ng-click="vm.getTopics($index)">
+									{{item.name}}
+									<span class="pull-right badge" title="{{item.topics}} Topics">{{item.topics}}</span>
+								</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</section>

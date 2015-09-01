@@ -198,3 +198,42 @@ div.threaddetails a{
 	color: #ffffff;
 	font-size: 18px;
 }
+section.threadcontent{
+	margin-top: 20px;
+}
+.forumtile{
+	background: #ffffff;
+	box-shadow: 0 1px 2px #c9cccd;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+ul.forumlist{
+	margin:0px;
+	padding: 0px;
+}
+ul.forumlist li{
+	list-style: none;
+	line-height: 35px;
+}
+ul.forumlist li a{
+	color: #666565;
+	text-decoration: none;
+}
+ul.forumlist li span.badge{
+	background-color: #bdc3c7;
+	font-size: 12px;
+	color: #ffffff;
+	margin-top: 7px;
+}
+.pagination i{
+	cursor: pointer;
+}
+.pagination span{
+	padding: 10px;
+}
+.pagination.top{
+	
+}
+.topcontainer{
+	margin-top: 60px;
+}
