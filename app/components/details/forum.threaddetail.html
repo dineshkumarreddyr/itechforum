@@ -1,66 +1,96 @@
 <nav class="navbar navbar-default navbar-fm navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" ui-sref="home">Forum</a>
-		</div>
-		<div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="javascript:void(0);">Welcome, {{vm.username}}</a></li>
-				<li><a href="javascript:void(0);" ng-click="vm.signout()">Sign out</a></li>
-			</ul>
-		</div><!--/.nav-collapse -->
-	</div>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="home">Forum</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="javascript:void(0);" ng-show="vm.userloggedin">Welcome, {{vm.username}}</a></li>
+                <li><a href="javascript:void(0);" ng-click="vm.signout()" ng-show="vm.userloggedin">Sign out</a></li>
+                <li><a href="javascript:void(0);" ng-show="!vm.userloggedin">Sign In</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
 </nav>
 
 <section class="topcontainer">
-	<div class="container-fluid">
-		<div class="breadcrumb">
-			<a ui-sref="list">All Topics</a>
-		</div>
-		<div ng-show="vm.replies.length>0">
-			<div class="col-md-12"  ng-repeat="thread in vm.replies">
-				<div class="forumtile">
-					<div class="threads row">
-						<div class="col-md-2 text-center">
-							<div class="thumbnail">
-								<img ng-src="{{thread.src}}" class="img-circle" alt="Img" />
-								<span>{{thread.name}}</span>
-							</div>
-						</div>
-						<div class="col-md-10">
-							<div class="threaddetails">
-								<div class="row">
-									<div class="col-md-11">
-										<h4>{{thread.thread}}</h4>
-										<div>
-											{{thread.answer}}
-										</div>
-									</div>
-								</div>
-								<div class="seperator"></div>
-								<div class="row margin-bottom-20">
-									<div class="col-md-3">
-										<i class="glyphicon glyphicon-time"></i> {{thread.lastmodified}}
-									</div>
-									<div class="col-md-4">
-										<i class="glyphicon glyphicon-thumbs-up"></i> {{thread.likes}} &nbsp;&nbsp;
-										<i class="glyphicon glyphicon-thumbs-down"></i> {{thread.dislikes}}
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12" ng-show="vm.replies.length==0">
-			0 threads found.Please select another topic
-		</div>
-	</div>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="breadcrumb">
+                <a ui-sref="list">All Topics</a>
+            </div>
+        </div>
+        <div ng-show="vm.replies.length>0">
+            <div class="col-md-12" ng-repeat="thread in vm.replies">
+                <div class="forumtile">
+                    <div class="threads row">
+                        <div class="col-md-2 text-center">
+                            <div class="thumbnail">
+                                <img ng-src="{{thread.src}}" class="img-circle" alt="Img" />
+                                <span>{{thread.name}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="threaddetails">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <h4>{{thread.thread}}</h4>
+                                        <div>
+                                            {{thread.answer}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="seperator"></div>
+                                <div class="row margin-bottom-20">
+                                    <div class="col-md-3">
+                                        <i class="glyphicon glyphicon-time"></i> {{thread.lastmodified}}
+                                    </div>
+                                    <div class="col-md-4">
+                                        <i class="glyphicon glyphicon-thumbs-up"></i> {{thread.likes}} &nbsp;&nbsp;
+                                        <i class="glyphicon glyphicon-thumbs-down"></i> {{thread.dislikes}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" ng-show="vm.replies.length==0">
+            <div class="forumtile">
+                0 replies found.Please select another topic
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="forumtile">
+                <div class="threads row">
+                    <h3>Submit your reply as a guest</h3>
+                    <form name="replyform">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Your answer</label>
+                            <textarea rows="4" class="form-control" required></textarea>
+                        </div>
+                        <div class="pull-right">
+                            <button class="btn btn-primary">Submit answer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

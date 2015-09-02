@@ -21,6 +21,9 @@
 		}
 		(new init()).getTopthread();
 
+		$scope.showCategories = function () {
+		    $state.go('list');
+		}
 
 		$scope.signin = function(invalid){
 			if(invalid){

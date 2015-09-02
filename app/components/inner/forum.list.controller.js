@@ -1,58 +1,68 @@
-(function(){
-	"use strict";
+(function () {
+    "use strict";
 
-	angular
+    angular
 	.module('forumapp')
-	.controller('ListController',listController);
+	.controller('ListController', listController);
 
-	function listController($scope,$http,$forumConfig,$state,manageapi,$log){
-		var vm = this;
-		if($forumConfig.userdetail.length>0)
-			vm.username = $forumConfig.userdetail[0].name;
-		else
-			vm.username = 'Guest';
-		vm.categories = [];
-		vm.topics = [];
-		vm.tempTopics = [];
-		vm.currentPage = 0;
-		vm.pageSize = 5;
+    function listController($scope, $http, $forumConfig, $state, manageapi, $log) {
+        var vm = this;
 
-		vm.numberOfPages=function(){
-			return Math.ceil(vm.tempTopics.length/vm.pageSize);                
-		}
+        vm.userloggedin = false;
+        if ($forumConfig.userdetail.length > 0) {
+            vm.username = $forumConfig.userdetail[0].name;
+            vm.userloggedin = true;
+        }
+        vm.categories = [];
+        vm.topics = [];
+        vm.tempTopics = [];
+        vm.currentPage = 0;
+        vm.pageSize = 5;
 
-		function init(){
-			this.getCategories = function(){
-				manageapi.getCategories().then(function(data){
-					vm.categories = data.categories;
-					vm.topics = data.topics;
-				},function(error){
-					$log.error(error);
-				});
-			}
-		}
-		(new init()).getCategories();
+        vm.getCurrentPageSizeArray = function (num) {
+            return new Array(num);
+        }
 
-		vm.getTopics = function(index){
-			if(vm.topics.length>0){
-				vm.tempTopics.length = 0;
-				var obj = _.filter(vm.topics,function(v){
-					return v.categoryid == vm.categories[index].id;
-				});
+        vm.pagingclick = function (index) {
+            vm.currentPage = index;
+        }
 
-				if(obj.length>0){
-					vm.tempTopics =obj;
-				}
-			}
-		}
+        vm.numberOfPages = function () {
+            return Math.ceil(vm.tempTopics.length / vm.pageSize);
+        }
 
-		vm.signout = function(){
-			$forumConfig.userdetail.length = 0;
-			$state.go('home');
-		}
+        function init() {
+            this.getCategories = function () {
+                manageapi.getCategories().then(function (data) {
+                    vm.categories = data.categories;
+                    vm.topics = data.topics;
+                }, function (error) {
+                    $log.error(error);
+                });
+            }
+        }
+        (new init()).getCategories();
 
-		vm.showdetail = function(index){
-			$state.go('detail',{id:vm.tempTopics[index].topicid});
-		}
-	}
+        vm.getTopics = function (index) {
+            if (vm.topics.length > 0) {
+                vm.tempTopics.length = 0;
+                var obj = _.filter(vm.topics, function (v) {
+                    return v.categoryid == vm.categories[index].id;
+                });
+
+                if (obj.length > 0) {
+                    vm.tempTopics = obj;
+                }
+            }
+        }
+
+        vm.signout = function () {
+            $forumConfig.userdetail.length = 0;
+            $state.go('home');
+        }
+
+        vm.showdetail = function (index) {
+            $state.go('detail', { id: vm.tempTopics[index].topicid });
+        }
+    }
 })();
