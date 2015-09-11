@@ -1,9 +1,10 @@
-(function(){
-	"use strict";
+(function () {
+    "use strict";
 
-	angular
+    angular
 	.module('forumapp')
-	.value('$forumConfig',{
-		userdetail:[]
-	})
+	.value('$forumConfig', {
+	    userdetail: [],
+	    apiUrl: 'http://localhost:4321/'
+	});
 })();

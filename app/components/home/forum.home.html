@@ -29,19 +29,19 @@
 				</div>
 			</div>
 			<div class="col-md-4">
-				<form name="fmsignup" class="fmhomeform">
+				<form name="fmsignup" class="fmhomeform" novalidate>
 					<h2>SIGN UP NOW</h2>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Username" />
+						<input type="text" class="form-control" placeholder="Username" ng-model="user" required/>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Email Address" />
+						<input type="text" class="form-control" placeholder="Email Address" ng-model="email" required/>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Password" />
+						<input type="password" class="form-control" placeholder="Password" ng-model="pass" required />
 					</div>
-					<button class="btn btn-primary btn-fmsubmit">Sign up</button>
-					<button class="btn btn-fmreset">Reset</button>
+					<button class="btn btn-primary btn-fmsubmit" ng-click="signup(fmsignup.$invalid)">Sign up</button>
+					<button class="btn btn-fmreset" ng-click="resetSignup()">Reset</button>
 				</form>
 			</div>
 		</div>
