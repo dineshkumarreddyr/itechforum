@@ -1,0 +1,41 @@
+﻿<nav class="navbar navbar-default navbar-fm navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="home">Forum</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="javascript:void(0);" ng-show="vm.userloggedin">Welcome, {{vm.username}}</a></li>
+                <li><a href="javascript:void(0);" ng-click="vm.signout()" ng-show="vm.userloggedin">Sign out</a></li>
+                <li><a href="javascript:void(0);" ng-show="!vm.userloggedin">Sign In</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<section class="topcontainer">
+    <div class="container">
+        <form name="entry" novalidate>
+            <div class="form-group">
+                <label>Category</label>
+                <input type="text" class="form-control" placeholder="Ex: Visa processing" ng-model="vm.category" required />
+            </div>
+            <div class="form-group">
+                <label>Topic</label>
+                <input type="text" class="form-control" placeholder="Ex: How to apply visa" ng-model="vm.topic" required />
+            </div>
+            <div class="form-group">
+                <label>Your query</label>
+                <textarea rows="4" class="form-control" placeholder="Ex: I have applied visa but rejected. How to apply again" ng-model="vm.query" required></textarea>
+            </div>
+            <button class="btn btn-success" ng-click="vm.entry(entry.$invalid)">Submit query</button>
+            <button class="btn btn-reset" type="reset">Reset</button>
+        </form>
+    </div>
+</section>

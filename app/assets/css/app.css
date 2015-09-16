@@ -309,3 +309,15 @@ ul.paging li {
         box-shadow: 0 1px 2px #c9cccd;
         text-decoration: none;
     }
+    button.btn-transparent{
+        background:transparent;
+        border:1px solid #efefef;
+        color:#efefef;
+        margin-left:20px;
+    }
+    button.btn-transparent:hover{
+        color:rgba(0,0,0,1) !important;
+    }
+    .lefttext div{
+        margin-top:20px;
+    }

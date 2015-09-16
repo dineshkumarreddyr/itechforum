@@ -5,8 +5,9 @@
 	.module('forumapp')
 	.controller('HomeController', homeController);
 
-    function homeController($scope, $http, $log, $state, $forumConfig, manageapi) {
+    function homeController($scope, $http, $log, $state, $forumConfig, manageapi, $rootScope) {
         $scope.topForum = [];
+        $scope.loggedin = false;
 
         function init() {
             this.getTopthread = function () {
@@ -23,23 +24,6 @@
 
         $scope.showCategories = function () {
             $state.go('list');
-        }
-
-        $scope.signin = function (invalid) {
-            if (invalid) {
-                alert('Please enter username / password');
-                return;
-            }
-            if ($scope.signusername == 'forumapp' && $scope.signpassword == 'user1') {
-                $forumConfig.userdetail.push({
-                    "name": $scope.signusername
-                });
-                angular.element('#signPop').modal('hide');
-
-                setTimeout(function () {
-                    $state.go('list');
-                }, 500);
-            }
         }
 
         $scope.signup = function (invalid) {
@@ -64,8 +48,45 @@
 
         }
 
+        $scope.signin = function (invalid) {
+            if (invalid) {
+                alert('Please enter mandatory fields');
+                return;
+            }
+            var data = {
+                user: $scope.signusername,
+                pass: $scope.signpassword
+            };
+
+            manageapi.loginUser(data).then(function (res) {
+                if (res && res.status != undefined) {
+                    if (res.status.indexOf('success') > -1) {
+                        $scope.loggedin = true;
+                        angular.element('#signPop').modal('hide');
+                        $scope.loggedinuser = res.records[0].user;
+                        $rootScope.loginusername = res.records[0].user;
+                        $forumConfig.userdetail.push(res.records[0]);
+                    }
+                    else if (res.status.indexOf('error') > -1) {
+                        alert('Invalid email address or password. Please check your details and try again');
+                    }
+                }
+            }, function (res) {
+                $log.error(res);
+            });
+        }
+
         $scope.resetSignup = function () {
             $scope.user = $scope.email = $scope.pass = null;
+        }
+
+        $scope.addTopic = function () {
+            if ($forumConfig.userdetail.length > 0) {
+                $state.go('qentry');
+            }
+            else {
+                angular.element('#signPop').modal('show');
+            }
         }
     }
 })();

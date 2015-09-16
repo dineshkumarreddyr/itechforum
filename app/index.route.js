@@ -15,10 +15,6 @@
 			templateUrl:'app/components/home/forum.home.html',
 			controller:'HomeController'
 		})
-		.state('home.entry',{
-			url:'/entry',
-			templateUrl:'app/components/entry/entry.html'
-		})
 		.state('list',{
 			url:'/list',
 			templateUrl:'app/components/inner/forum.list.html',
@@ -30,6 +26,12 @@
 			templateUrl:'app/components/details/forum.threaddetail.html',
 			controller:'ThreaddetailController',
 			controllerAs:'vm'
-		});
+		})
+        .state('qentry', {
+            url: '/entry',
+            templateUrl: 'app/components/queryentry/forum.queryentry.html',
+            controller: 'QueryentryController',
+            controllerAs:'vm'
+        });
 	}
 })();

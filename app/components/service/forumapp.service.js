@@ -3,7 +3,7 @@
 
     angular
 	.module('forumapp')
-	.factory('manageapi', ['$http', '$q', '$log', '$forumConfig', function ($http, $q, $log, $forumConfig) {
+	.factory('manageapi', ['$http', '$q', '$log', '$forumConfig', function ($http, $q, $log, $forumConfig, $state) {
 	    function getCategories() {
 	        var def = $q.defer();
 
@@ -54,12 +54,45 @@
             })
 	        return deferred.promise;
 	    };
+	    function loginuser(data) {
+	        var deferred = $q.defer();
+
+	        $http.post($forumConfig.apiUrl + 'signin', data)
+            .success(function (res) {
+                deferred.resolve(res);
+            }).error(function (res) {
+                deferred.reject(res);
+                $log.error('API failed  - ' + res);
+            });
+	        return deferred.promise;
+	    };
+
+	    function logoutuser() {
+	        $forumConfig.userdetail = [];
+	        $state.go('/');
+	    };
+
+	    function logquery(data) {
+	        var deferred = $q.defer();
+
+	        $http.post($forumConfig.apiUrl + 'iquery', data)
+            .success(function (res) {
+                deferred.resolve(res);
+            }).error(function (res) {
+                deferred.reject(res);
+                $log.error('API failed  - ' + res);
+            });
+	        return deferred.promise;
+	    };
 
 	    return {
 	        getCategories: getCategories,
 	        getTopics: getTopics,
 	        getReplies: getReplies,
-	        createUser: createuser
+	        createUser: createuser,
+	        loginUser: loginuser,
+	        logoutUser: logoutuser,
+            logQuery:logquery
 	    }
 	}]);
 })();

@@ -10,7 +10,7 @@
 
         vm.userloggedin = false;
         if ($forumConfig.userdetail.length > 0) {
-            vm.username = $forumConfig.userdetail[0].name;
+            vm.username = $forumConfig.userdetail[0].user;
             vm.userloggedin = true;
         }
         vm.categories = [];

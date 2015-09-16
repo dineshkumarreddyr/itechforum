@@ -11,7 +11,9 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" data-toggle="modal" data-target="#signPop">SIGN IN <span class="sr-only">(current)</span></a></li>
+				<li ng-show="!loggedin"><a href="#" data-toggle="modal" data-target="#signPop">SIGN IN <span class="sr-only">(current)</span></a></li>
+                <li ng-show="loggedin"><a href="#">Welcome, {{loggedinuser}}</a></li>
+                <li ng-show="loggedin"><a href="#">Sign out</a></li>
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div>
@@ -24,6 +26,7 @@
 			<div class="col-md-8 text-center lefttext">
 				<h2>THINGS ARE MADE EASY. GET THE SOLUTIONS FOR YOUR QUERIES</h2>
 				<button class="btn btn-success btn-forum" ng-click="showCategories()">Select Category</button>
+                <button class="btn btn-default btn-forum btn-transparent" ng-click="addTopic()">Post your query</button>
 				<div>
 					<a href="#fmtopforum" title="Scroll down to see top threads"><i class="fa fa-chevron-down "></i></a>
 				</div>
