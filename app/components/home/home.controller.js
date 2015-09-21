@@ -64,6 +64,7 @@
                         $scope.loggedin = true;
                         angular.element('#signPop').modal('hide');
                         $scope.loggedinuser = res.records[0].user;
+                        $scope.loggedinuserid = res.records[0].userid;
                         $rootScope.loginusername = res.records[0].user;
                         $forumConfig.userdetail.push(res.records[0]);
                     }

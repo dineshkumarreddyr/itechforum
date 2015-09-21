@@ -25,7 +25,7 @@
                 category: vm.category,
                 topic: vm.topic,
                 description: vm.query,
-                user: $forumConfig.userdetail[0].user
+                user: $forumConfig.userdetail[0].loggedinuserid
             }
 
             manageapi.logQuery(data).then(function (res) {

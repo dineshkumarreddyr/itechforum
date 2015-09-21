@@ -85,6 +85,20 @@
 	        return deferred.promise;
 	    };
 
+	    function getQueries() {
+	        var deferred = $q.defer();
+
+	        $http.get($forumConfig.apiUrl + 'gquery')
+            .success(function (res) {
+                deferred.resolve(res);
+            })
+            .error(function (res) {
+                deferred.reject(res);
+                $log.error('API failed - ' + res);
+            });
+	        return deferred.promise;
+	    };
+
 	    return {
 	        getCategories: getCategories,
 	        getTopics: getTopics,
@@ -92,7 +106,8 @@
 	        createUser: createuser,
 	        loginUser: loginuser,
 	        logoutUser: logoutuser,
-            logQuery:logquery
+	        logQuery: logquery,
+	        Queries: getQueries
 	    }
 	}]);
 })();

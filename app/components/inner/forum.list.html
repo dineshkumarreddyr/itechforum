@@ -122,8 +122,8 @@
                         <ul class="forumlist">
                             <li ng-repeat="item in vm.categories">
                                 <a href="javascript:void(0);" ng-click="vm.getTopics($index)">
-                                    {{item.name}}
-                                    <span class="pull-right badge" title="{{item.topics}} Topics">{{item.topics}}</span>
+                                    {{item.category}}
+                                    <!--<span class="pull-right badge" title="{{item.topics}} Topics">{{item.topics}}</span>-->
                                 </a>
                             </li>
                         </ul>

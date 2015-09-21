@@ -32,16 +32,29 @@
         }
 
         function init() {
-            this.getCategories = function () {
-                manageapi.getCategories().then(function (data) {
-                    vm.categories = data.categories;
-                    vm.topics = data.topics;
+            //this.getCategories = function () {
+            //    manageapi.getCategories().then(function (data) {
+            //        vm.categories = data.categories;
+            //        vm.topics = data.topics;
+            //    }, function (error) {
+            //        $log.error(error);
+            //    });
+            //};
+
+            this.getQueries = function () {
+                manageapi.Queries().then(function (response) {
+                    vm.categories = _.chain(response.records).groupBy("category").pairs()
+                             .map(function (currentItem) {
+                                 return _.object(_.zip(["category"], currentItem));
+                             }).value();
+                    
                 }, function (error) {
                     $log.error(error);
                 });
             }
         }
-        (new init()).getCategories();
+        //(new init()).getCategories();
+        (new init()).getQueries();
 
         vm.getTopics = function (index) {
             if (vm.topics.length > 0) {
