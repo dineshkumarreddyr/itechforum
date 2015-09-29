@@ -43,10 +43,12 @@
 
             this.getQueries = function () {
                 manageapi.Queries().then(function (response) {
+                    vm.topics = response.records;
                     vm.categories = _.chain(response.records).groupBy("category").pairs()
                              .map(function (currentItem) {
                                  return _.object(_.zip(["category"], currentItem));
                              }).value();
+
                     
                 }, function (error) {
                     $log.error(error);
@@ -60,7 +62,7 @@
             if (vm.topics.length > 0) {
                 vm.tempTopics.length = 0;
                 var obj = _.filter(vm.topics, function (v) {
-                    return v.categoryid == vm.categories[index].id;
+                    return v.category == vm.categories[index].category;
                 });
 
                 if (obj.length > 0) {
@@ -75,7 +77,7 @@
         }
 
         vm.showdetail = function (index) {
-            $state.go('detail', { id: vm.tempTopics[index].topicid });
+            $state.go('detail', { id: vm.tempTopics[index].queryid });
         }
     }
 })();

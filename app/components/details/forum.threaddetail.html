@@ -40,20 +40,20 @@
                             <div class="threaddetails">
                                 <div class="row">
                                     <div class="col-md-11">
-                                        <h4>{{thread.thread}}</h4>
+                                        <h4>{{$parent.vm.topics[0].topic}}</h4>
                                         <div>
-                                            {{thread.answer}}
+                                            {{thread.post}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="seperator"></div>
                                 <div class="row margin-bottom-20">
                                     <div class="col-md-3">
-                                        <i class="glyphicon glyphicon-time"></i> {{thread.lastmodified}}
+                                        <i class="glyphicon glyphicon-time"></i> {{thread.createddate | date:'MMMM d, y':'+5:30'}}
                                     </div>
                                     <div class="col-md-4">
-                                        <i class="glyphicon glyphicon-thumbs-up"></i> {{thread.likes}} &nbsp;&nbsp;
-                                        <i class="glyphicon glyphicon-thumbs-down"></i> {{thread.dislikes}}
+                                        <i class="glyphicon glyphicon-thumbs-up"></i> {{thread.likes!=null?thread.likes:'0'}} &nbsp;&nbsp;
+                                        <i class="glyphicon glyphicon-thumbs-down"></i> {{thread.dislikes!=null?thread.dislikes:'0'}}
                                     </div>
                                 </div>
                             </div>
@@ -71,22 +71,19 @@
         <div class="col-md-12">
             <div class="forumtile">
                 <div class="threads row">
-                    <h3>Submit your reply as a guest</h3>
+                    <h3>Submit your reply</h3>
                     <form name="replyform">
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" required />
+                            <label>Topic</label>
+                            <input type="text" readonly value="{{vm.topics[0].topic}}" class="form-control" required />
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" class="form-control" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Your answer</label>
-                            <textarea rows="4" class="form-control" required></textarea>
+                            <label>Comments *</label>
+                            <textarea rows="4" class="form-control" ng-model="vm.post" required></textarea>
                         </div>
                         <div class="pull-right">
-                            <button class="btn btn-primary">Submit answer</button>
+                            <button class="btn btn-reset" type="reset">Reset</button>
+                            <button class="btn btn-primary" ng-click="vm.savePost(replyform.$invalid)">Submit answer</button>
                         </div>
                     </form>
                 </div>

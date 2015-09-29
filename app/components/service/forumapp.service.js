@@ -99,6 +99,34 @@
 	        return deferred.promise;
 	    };
 
+	    function savePost(data) {
+	        var deferred = $q.defer();
+
+	        $http.post($forumConfig.apiUrl + 'iposts', data)
+            .success(function (res) {
+                deferred.resolve(res);
+            })
+            .error(function (res) {
+                deferred.reject(res);
+                $log.error('API failed - ' + res);
+            });
+	        return deferred.promise;
+	    };
+
+	    function getPosts(id) {
+	        var deferred = $q.defer();
+
+	        $http.get($forumConfig.apiUrl + 'gposts' + '/' + id)
+            .success(function (res) {
+                deferred.resolve(res);
+            })
+            .error(function (res) {
+                deferred.reject(res);
+                $log.error(res);
+            });
+	        return deferred.promise;
+	    }
+
 	    return {
 	        getCategories: getCategories,
 	        getTopics: getTopics,
@@ -107,7 +135,9 @@
 	        loginUser: loginuser,
 	        logoutUser: logoutuser,
 	        logQuery: logquery,
-	        Queries: getQueries
+	        Queries: getQueries,
+	        SavePost: savePost,
+	        GetPost: getPosts
 	    }
 	}]);
 })();

@@ -17,6 +17,8 @@
 
         vm.replies = [];
 
+        vm.topics = [];
+
 
         function init() {
             this.getReplies = function () {
@@ -32,9 +34,58 @@
                 }, function (error) {
                     $log.error(error);
                 });
+            };
+            this.getDetails = function () {
+                manageapi.Queries().then(function (response) {
+                    if (response != undefined && response.status.length > 0) {
+                        if ($stateParams.id) {
+                            vm.topics = _.filter(response.records, function (v) {
+                                return v.queryid == $stateParams.id;
+                            });
+                        }
+                    }
+                }, function (response) {
+
+                });
+            };
+            this.getPosts = function () {
+                manageapi.GetPost($stateParams.id).then(function (response) {
+                    if (response != undefined && response.status.indexOf('success') > -1) {
+                        vm.replies = response.records;
+                    }
+                }, function (response) {
+                    $log.error('API Error' + res);
+                });
             }
         }
-        (new init()).getReplies();
+        (new init()).getPosts();
+        (new init()).getDetails();
+
+
+        vm.savePost = function (invalid) {
+            if (invalid) {
+                alert('Mandatory !!');
+                return;
+            }
+
+            var data = {
+                post: vm.post,
+                category: vm.topics[0].category,
+                topicid: $stateParams.id,
+                username: $forumConfig.userdetail[0].user
+            }
+
+            if (data) {
+                manageapi.SavePost(data).then(function (response) {
+                    if (response != undefined && response.status.indexOf('success') > -1) {
+                        alert('Thanks for your reply');
+                        (new init()).getPosts();
+                    }
+                }, function (response) {
+                    $log.error('API ERROR' + response);
+                });
+            }
+        }
 
 
         vm.signout = function () {

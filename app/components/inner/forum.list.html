@@ -72,9 +72,9 @@
                         <div class="threaddetails">
                             <div class="row">
                                 <div class="col-md-11">
-                                    <a href="javascript:void(0);" ng-click="vm.showdetail($index)">{{thread.thread}}</a>
+                                    <a href="javascript:void(0);" ng-click="vm.showdetail($index)">{{thread.topic}}</a>
                                     <div>
-                                        {{thread.detail}}
+                                        {{thread.query}}
                                     </div>
                                 </div>
                                 <div class="col-md-1 text-right">
@@ -86,11 +86,11 @@
                             <div class="seperator"></div>
                             <div class="row margin-bottom-20">
                                 <div class="col-md-3">
-                                    <i class="glyphicon glyphicon-time"></i> {{thread.lastmodified}}
+                                    <i class="glyphicon glyphicon-time"></i> {{thread.querydate | date:'MMMM d, y':'+5:30'}}
                                 </div>
                                 <div class="col-md-4">
-                                    <i class="glyphicon glyphicon-thumbs-up"></i> {{thread.likes}} &nbsp;&nbsp;
-                                    <i class="glyphicon glyphicon-thumbs-down"></i> {{thread.dislikes}}
+                                    <i class="glyphicon glyphicon-thumbs-up"></i> {{thread.likes!=null?thread.likes:'0'}} &nbsp;&nbsp;
+                                    <i class="glyphicon glyphicon-thumbs-down"></i> {{thread.dislikes!=null?thread.dislikes:'0'}}
                                 </div>
                             </div>
                         </div>
